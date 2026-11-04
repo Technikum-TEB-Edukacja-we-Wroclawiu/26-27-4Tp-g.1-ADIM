@@ -47,3 +47,24 @@ def zadanie15(tekst: str, slowo: str) -> None:
 
 
 zadanie15('Ala ma kot. Kot ma Ale', 'Al')
+
+
+def zadanie12(wiadomosc:str, zakazane: list[str]) -> str:
+    oryginalny = wiadomosc
+    wiadomosc = " " + wiadomosc.lower()
+    for slowo in zakazane:
+        wiadomosc = wiadomosc.replace(' '+slowo.lower()+' ', ' '+'*'*len(slowo)+' ')
+        wiadomosc = wiadomosc.replace(' '+slowo.lower()+'.', ' '+'*'*len(slowo)+'.')
+        wiadomosc = wiadomosc.replace(' ' + slowo.lower() + ',', ' ' + '*' * len(slowo) + ',')
+
+
+    # naprawa
+    wiadomosc = list(wiadomosc)
+    wiadomosc = wiadomosc[1:]
+    for i in range(len(wiadomosc)):
+        if wiadomosc[i] != '*' and wiadomosc[i] != oryginalny[i]:
+            wiadomosc[i] = oryginalny[i]
+
+    return "".join(wiadomosc)
+
+print(zadanie12('Ala ma kot. Kot Ma Ale', ['Al', 'kot']))
